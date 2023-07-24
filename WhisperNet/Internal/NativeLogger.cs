@@ -35,9 +35,11 @@ namespace Whisper.Internal
 
 		static void logSink( IntPtr context, eLogLevel lvl, string message )
 		{
-			if( lvl == eLogLevel.Error )
-				state.setText( message );
-			logMessage?.Invoke( lvl, message );
+			lvl = eLogLevel.Warning;
+
+                if (lvl == eLogLevel.Error)
+					state.setText(message);
+				logMessage?.Invoke(lvl, message);			
 		}
 
 		sealed class ThreadState
